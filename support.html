@@ -36,10 +36,8 @@
     strong { color: #e0e0f0; }
     footer { padding: 32px; text-align: center; border-top: 1px solid #ffffff0a; color: #5a5480; font-size: 0.85rem; }
     footer a { color: #5a5480; }
-
-    [data-lang] { display: none; }
-    [data-lang].visible { display: block; }
-    span[data-lang].visible { display: inline; }
+    .lang-block { display: none; }
+    .lang-block.active { display: block; }
   </style>
 </head>
 <body>
@@ -47,11 +45,17 @@
   <nav>
     <a class="nav-logo" href="index.html">akanzi</a>
     <div class="nav-right">
-      <div class="nav-links">
-        <a href="index.html"><span data-lang="en" class="visible">Home</span><span data-lang="tr">Ana Sayfa</span></a>
-        <a href="#support"><span data-lang="en" class="visible">Support</span><span data-lang="tr">Destek</span></a>
-        <a href="#privacy"><span data-lang="en" class="visible">Privacy</span><span data-lang="tr">Gizlilik</span></a>
-        <a href="#terms"><span data-lang="en" class="visible">Terms</span><span data-lang="tr">Koşullar</span></a>
+      <div class="nav-links" id="nav-links-en">
+        <a href="index.html">Home</a>
+        <a href="#support">Support</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+      </div>
+      <div class="nav-links" id="nav-links-tr" style="display:none">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="#support">Destek</a>
+        <a href="#privacy">Gizlilik</a>
+        <a href="#terms">Koşullar</a>
       </div>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('en')">EN</button>
@@ -60,36 +64,38 @@
     </div>
   </nav>
 
-  <div class="hero">
-    <h1>
-      <span data-lang="en" class="visible">Support & Legal</span>
-      <span data-lang="tr">Destek & Hukuki Bilgiler</span>
-    </h1>
-    <p>
-      <span data-lang="en" class="visible">Need help or want to read the fine print? You're in the right place.</span>
-      <span data-lang="tr">Yardıma mı ihtiyacın var ya da detayları okumak mı istiyorsun? Doğru yerdesin.</span>
-    </p>
+  <!-- HERO EN -->
+  <div class="lang-block active" id="hero-en">
+    <div class="hero">
+      <h1>Support & Legal</h1>
+      <p>Need help or want to read the fine print? You're in the right place.</p>
+    </div>
   </div>
 
-  <div class="container">
-
-    <!-- SUPPORT -->
-    <div class="card" id="support">
-      <h2><span data-lang="en" class="visible">Support</span><span data-lang="tr">Destek</span></h2>
-      <p><span data-lang="en" class="visible">Having trouble with Akanzi? We're happy to help.</span><span data-lang="tr">Akanzi ile ilgili bir sorun mu yaşıyorsun? Yardımcı olmaktan memnuniyet duyarız.</span></p>
-      <br />
-      <p><span data-lang="en" class="visible">Email us at:</span><span data-lang="tr">Bize e-posta gönder:</span></p>
-      <a class="contact-email" href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a>
-      <br />
-      <p><span data-lang="en" class="visible">We typically respond within 1–2 business days.</span><span data-lang="tr">Genellikle 1–2 iş günü içinde yanıt veririz.</span></p>
+  <!-- HERO TR -->
+  <div class="lang-block" id="hero-tr">
+    <div class="hero">
+      <h1>Destek & Hukuki Bilgiler</h1>
+      <p>Yardıma mı ihtiyacın var ya da detayları okumak mı istiyorsun? Doğru yerdesin.</p>
     </div>
+  </div>
 
-    <!-- PRIVACY -->
-    <div class="card" id="privacy">
-      <h2><span data-lang="en" class="visible">Privacy Policy</span><span data-lang="tr">Gizlilik Politikası</span></h2>
+  <!-- CONTENT EN -->
+  <div class="lang-block active" id="content-en">
+    <div class="container">
 
-      <!-- EN -->
-      <div data-lang="en" class="visible">
+      <div class="card" id="support">
+        <h2>Support</h2>
+        <p>Having trouble with Akanzi? We're happy to help.</p>
+        <br />
+        <p>Email us at:</p>
+        <a class="contact-email" href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a>
+        <br />
+        <p>We typically respond within 1–2 business days.</p>
+      </div>
+
+      <div class="card" id="privacy">
+        <h2>Privacy Policy</h2>
         <p><em>Last updated: May 2025</em></p><br />
         <p>Akanzi ("we", "our", or "the app") is committed to protecting your privacy. This policy explains what data is collected when you use Akanzi and how it is used.</p><br />
         <p><strong>1. DATA WE COLLECT</strong></p><br />
@@ -107,32 +113,8 @@
         <p><strong>6. CONTACT</strong><br />Questions? Reach us at: <a href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a></p>
       </div>
 
-      <!-- TR -->
-      <div data-lang="tr">
-        <p><em>Son güncelleme: Mayıs 2025</em></p><br />
-        <p>Akanzi ("biz", "uygulama") gizliliğinizi korumayı taahhüt eder. Bu politika, Akanzi'yi kullandığınızda hangi verilerin toplandığını ve nasıl kullanıldığını açıklar.</p><br />
-        <p><strong>1. TOPLADĞIMIZ VERİLER</strong></p><br />
-        <p><strong>Konum</strong><br />Uygulama kullanımdayken cihazınızın konumuna erişim talep ederiz. Bu yalnızca Google Places API aracılığıyla yakındaki yerleri aramak için kullanılır. Konumunuzu hiçbir sunucuda saklamayız — tüm işlemler cihazınızda gerçekleşir.</p><br />
-        <p><strong>Reklam Tanımlayıcısı (IDFA)</strong><br />İzninizle (Uygulama İzleme Şeffaflığı istemi aracılığıyla), AdMob kişiselleştirilmiş reklamlar sunmak için cihazınızın reklam tanımlayıcısını toplayabilir. Reddederseniz, kişiselleştirilmemiş reklamlar gösterilir.</p><br />
-        <p><strong>Uygulama Verileri</strong><br />Gruplar, üyeler ve kaydedilen mekanlar cihazınızda AsyncStorage kullanılarak yerel olarak depolanır. Bu veriler cihazınızdan çıkmaz ve hiçbir sunucuya gönderilmez.</p><br />
-        <p><strong>2. ÜÇÜNCÜ TARAF HİZMETLER</strong></p><br />
-        <ul>
-          <li><strong>Google Places API</strong> — Yakındaki yerleri aramak ve görüntülemek için kullanılır. <a href="https://policies.google.com/privacy" target="_blank">Google'ın Gizlilik Politikası</a>'na tabidir.</li>
-          <li><strong>Google AdMob</strong> — Reklam göstermek için kullanılır. <a href="https://policies.google.com/privacy" target="_blank">Google'ın Gizlilik Politikası</a>'na tabidir.</li>
-        </ul><br />
-        <p><strong>3. VERİ PAYLAŞIMI</strong><br />Kişisel verilerinizi, yukarıda Google hizmetleri aracılığıyla açıklananlar dışında üçüncü taraflarla satmaz, takas etmez veya paylaşmayız.</p><br />
-        <p><strong>4. VERİ SAKLAMA</strong><br />Tüm uygulama verileri cihazınızda yerel olarak saklanır. Uygulamayı kaldırmak tüm verileri siler. Harici sunucularda herhangi bir veri saklamayız.</p><br />
-        <p><strong>5. ÇOCUKLARIN GİZLİLİĞİ</strong><br />Akanzi 13 yaşın altındaki çocuklara yönelik değildir. Çocuklardan bilerek veri toplamayız.</p><br />
-        <p><strong>6. İLETİŞİM</strong><br />Sorularınız için: <a href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a></p>
-      </div>
-    </div>
-
-    <!-- TERMS -->
-    <div class="card" id="terms">
-      <h2><span data-lang="en" class="visible">Terms of Use</span><span data-lang="tr">Kullanım Koşulları</span></h2>
-
-      <!-- EN -->
-      <div data-lang="en" class="visible">
+      <div class="card" id="terms">
+        <h2>Terms of Use</h2>
         <p><em>Last updated: May 2025</em></p><br />
         <p>By using Akanzi ("the app"), you agree to these Terms of Use. If you do not agree, please do not use the app.</p><br />
         <p><strong>1. USE OF THE APP</strong><br />Akanzi helps groups discover and decide on nearby places to visit. You may use the app for personal, non-commercial purposes only.</p><br />
@@ -152,8 +134,45 @@
         <p><strong>9. CONTACT</strong><br />Questions? Reach us at: <a href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a></p>
       </div>
 
-      <!-- TR -->
-      <div data-lang="tr">
+    </div>
+    <footer><p>© 2025 Akanzi — <a href="index.html">Back to home</a></p></footer>
+  </div>
+
+  <!-- CONTENT TR -->
+  <div class="lang-block" id="content-tr">
+    <div class="container">
+
+      <div class="card" id="support-tr">
+        <h2>Destek</h2>
+        <p>Akanzi ile ilgili bir sorun mu yaşıyorsun? Yardımcı olmaktan memnuniyet duyarız.</p>
+        <br />
+        <p>Bize e-posta gönder:</p>
+        <a class="contact-email" href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a>
+        <br />
+        <p>Genellikle 1–2 iş günü içinde yanıt veririz.</p>
+      </div>
+
+      <div class="card" id="privacy-tr">
+        <h2>Gizlilik Politikası</h2>
+        <p><em>Son güncelleme: Mayıs 2025</em></p><br />
+        <p>Akanzi ("biz", "uygulama") gizliliğinizi korumayı taahhüt eder. Bu politika, Akanzi'yi kullandığınızda hangi verilerin toplandığını ve nasıl kullanıldığını açıklar.</p><br />
+        <p><strong>1. TOPLADĞIMIZ VERİLER</strong></p><br />
+        <p><strong>Konum</strong><br />Uygulama kullanımdayken cihazınızın konumuna erişim talep ederiz. Bu yalnızca Google Places API aracılığıyla yakındaki yerleri aramak için kullanılır. Konumunuzu hiçbir sunucuda saklamayız — tüm işlemler cihazınızda gerçekleşir.</p><br />
+        <p><strong>Reklam Tanımlayıcısı (IDFA)</strong><br />İzninizle (Uygulama İzleme Şeffaflığı istemi aracılığıyla), AdMob kişiselleştirilmiş reklamlar sunmak için cihazınızın reklam tanımlayıcısını toplayabilir. Reddederseniz, kişiselleştirilmemiş reklamlar gösterilir.</p><br />
+        <p><strong>Uygulama Verileri</strong><br />Gruplar, üyeler ve kaydedilen mekanlar cihazınızda AsyncStorage kullanılarak yerel olarak depolanır. Bu veriler cihazınızdan çıkmaz ve hiçbir sunucuya gönderilmez.</p><br />
+        <p><strong>2. ÜÇÜNCÜ TARAF HİZMETLER</strong></p><br />
+        <ul>
+          <li><strong>Google Places API</strong> — Yakındaki yerleri aramak ve görüntülemek için kullanılır. <a href="https://policies.google.com/privacy" target="_blank">Google'ın Gizlilik Politikası</a>'na tabidir.</li>
+          <li><strong>Google AdMob</strong> — Reklam göstermek için kullanılır. <a href="https://policies.google.com/privacy" target="_blank">Google'ın Gizlilik Politikası</a>'na tabidir.</li>
+        </ul><br />
+        <p><strong>3. VERİ PAYLAŞIMI</strong><br />Kişisel verilerinizi, yukarıda Google hizmetleri aracılığıyla açıklananlar dışında üçüncü taraflarla satmaz, takas etmez veya paylaşmayız.</p><br />
+        <p><strong>4. VERİ SAKLAMA</strong><br />Tüm uygulama verileri cihazınızda yerel olarak saklanır. Uygulamayı kaldırmak tüm verileri siler. Harici sunucularda herhangi bir veri saklamayız.</p><br />
+        <p><strong>5. ÇOCUKLARIN GİZLİLİĞİ</strong><br />Akanzi 13 yaşın altındaki çocuklara yönelik değildir. Çocuklardan bilerek veri toplamayız.</p><br />
+        <p><strong>6. İLETİŞİM</strong><br />Sorularınız için: <a href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a></p>
+      </div>
+
+      <div class="card" id="terms-tr">
+        <h2>Kullanım Koşulları</h2>
         <p><em>Son güncelleme: Mayıs 2025</em></p><br />
         <p>Akanzi'yi ("uygulama") kullanarak bu Kullanım Koşulları'nı kabul etmiş olursunuz. Kabul etmiyorsanız lütfen uygulamayı kullanmayın.</p><br />
         <p><strong>1. UYGULAMANIN KULLANIMI</strong><br />Akanzi, grupların yakınlarındaki yerleri keşfetmesine ve karar vermesine yardımcı olur. Uygulamayı yalnızca kişisel, ticari olmayan amaçlarla kullanabilirsiniz.</p><br />
@@ -172,19 +191,22 @@
         <p><strong>8. KOŞULLARDA DEĞİŞİKLİK</strong><br />Bu koşulları istediğimiz zaman güncelleyebiliriz. Kullanmaya devam etmek kabul anlamına gelir.</p><br />
         <p><strong>9. İLETİŞİM</strong><br />Sorularınız için: <a href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a></p>
       </div>
+
     </div>
-
+    <footer><p>© 2025 Akanzi — <a href="index.html">Ana sayfaya dön</a></p></footer>
   </div>
-
-  <footer>
-    <p>© 2025 Akanzi — <a href="index.html"><span data-lang="en" class="visible">Back to home</span><span data-lang="tr">Ana sayfaya dön</span></a></p>
-  </footer>
 
   <script>
     function setLang(lang) {
-      document.querySelectorAll('[data-lang]').forEach(el => {
-        el.classList.toggle('visible', el.dataset.lang === lang);
+      // Toggle content blocks
+      ['hero','content'].forEach(block => {
+        document.getElementById(block + '-en').classList.toggle('active', lang === 'en');
+        document.getElementById(block + '-tr').classList.toggle('active', lang === 'tr');
       });
+      // Toggle nav links
+      document.getElementById('nav-links-en').style.display = lang === 'en' ? 'flex' : 'none';
+      document.getElementById('nav-links-tr').style.display = lang === 'tr' ? 'flex' : 'none';
+      // Toggle buttons
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
       });
