@@ -14,9 +14,13 @@
       position: sticky; top: 0; z-index: 100;
     }
     .nav-logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -1px; color: #fff; text-decoration: none; }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
     .nav-links { display: flex; gap: 24px; }
     .nav-links a { color: #9990cc; font-size: 0.9rem; text-decoration: none; }
     .nav-links a:hover { color: #fff; }
+    .lang-toggle { display: flex; gap: 2px; background: #ffffff0a; border: 1px solid #ffffff0f; border-radius: 8px; overflow: hidden; }
+    .lang-btn { padding: 5px 12px; font-size: 0.8rem; font-weight: 600; cursor: pointer; border: none; background: transparent; color: #9990cc; transition: all 0.15s; }
+    .lang-btn.active { background: #a78bfa; color: #fff; }
     .hero { background: linear-gradient(135deg, #160d2e, #080810); padding: 60px 24px 40px; text-align: center; border-bottom: 1px solid #ffffff11; }
     .hero h1 { font-size: 2rem; font-weight: 800; letter-spacing: -1px; color: #fff; }
     .hero p { margin-top: 10px; color: #9990cc; font-size: 0.95rem; }
@@ -32,82 +36,165 @@
     strong { color: #e0e0f0; }
     footer { padding: 32px; text-align: center; border-top: 1px solid #ffffff0a; color: #5a5480; font-size: 0.85rem; }
     footer a { color: #5a5480; }
+
+    [data-lang] { display: none; }
+    [data-lang].visible { display: block; }
+    span[data-lang].visible { display: inline; }
   </style>
 </head>
 <body>
 
   <nav>
     <a class="nav-logo" href="index.html">akanzi</a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="#support">Support</a>
-      <a href="#privacy">Privacy</a>
-      <a href="#terms">Terms</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="index.html"><span data-lang="en" class="visible">Home</span><span data-lang="tr">Ana Sayfa</span></a>
+        <a href="#support"><span data-lang="en" class="visible">Support</span><span data-lang="tr">Destek</span></a>
+        <a href="#privacy"><span data-lang="en" class="visible">Privacy</span><span data-lang="tr">Gizlilik</span></a>
+        <a href="#terms"><span data-lang="en" class="visible">Terms</span><span data-lang="tr">Koşullar</span></a>
+      </div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('tr')">TR</button>
+      </div>
     </div>
   </nav>
 
   <div class="hero">
-    <h1>Support & Legal</h1>
-    <p>Need help or want to read the fine print? You're in the right place.</p>
+    <h1>
+      <span data-lang="en" class="visible">Support & Legal</span>
+      <span data-lang="tr">Destek & Hukuki Bilgiler</span>
+    </h1>
+    <p>
+      <span data-lang="en" class="visible">Need help or want to read the fine print? You're in the right place.</span>
+      <span data-lang="tr">Yardıma mı ihtiyacın var ya da detayları okumak mı istiyorsun? Doğru yerdesin.</span>
+    </p>
   </div>
 
   <div class="container">
 
+    <!-- SUPPORT -->
     <div class="card" id="support">
-      <h2>Support</h2>
-      <p>Having trouble with Akanzi? We're happy to help.</p>
+      <h2><span data-lang="en" class="visible">Support</span><span data-lang="tr">Destek</span></h2>
+      <p><span data-lang="en" class="visible">Having trouble with Akanzi? We're happy to help.</span><span data-lang="tr">Akanzi ile ilgili bir sorun mu yaşıyorsun? Yardımcı olmaktan memnuniyet duyarız.</span></p>
       <br />
-      <p>Email us at:</p>
+      <p><span data-lang="en" class="visible">Email us at:</span><span data-lang="tr">Bize e-posta gönder:</span></p>
       <a class="contact-email" href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a>
       <br />
-      <p>We typically respond within 1–2 business days.</p>
+      <p><span data-lang="en" class="visible">We typically respond within 1–2 business days.</span><span data-lang="tr">Genellikle 1–2 iş günü içinde yanıt veririz.</span></p>
     </div>
 
+    <!-- PRIVACY -->
     <div class="card" id="privacy">
-      <h2>Privacy Policy</h2>
-      <p><em>Last updated: May 2025</em></p><br />
-      <p>Akanzi ("we", "our", or "the app") is committed to protecting your privacy. This policy explains what data is collected when you use Akanzi and how it is used.</p><br />
-      <p><strong>1. DATA WE COLLECT</strong></p><br />
-      <p><strong>Location</strong><br />We request access to your device's location while the app is in use. This is used solely to search for nearby places via the Google Places API. We do not store your location on any server — all processing happens on your device.</p><br />
-      <p><strong>Advertising Identifier (IDFA)</strong><br />With your permission (via the App Tracking Transparency prompt), AdMob may collect your device's advertising identifier to deliver personalised ads. If you decline, non-personalised ads will be shown instead.</p><br />
-      <p><strong>App Data</strong><br />Groups, members, and saved spots are stored locally on your device using AsyncStorage. This data never leaves your device and is not sent to any server.</p><br />
-      <p><strong>2. THIRD-PARTY SERVICES</strong></p><br />
-      <ul>
-        <li><strong>Google Places API</strong> — Used to search and display nearby places. Subject to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
-        <li><strong>Google AdMob</strong> — Used to display ads. Subject to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
-      </ul><br />
-      <p><strong>3. DATA SHARING</strong><br />We do not sell, trade, or share your personal data with third parties, except as described above via Google services.</p><br />
-      <p><strong>4. DATA RETENTION</strong><br />All app data is stored locally on your device. Uninstalling the app removes all data. We retain no data on external servers.</p><br />
-      <p><strong>5. CHILDREN'S PRIVACY</strong><br />Akanzi is not directed at children under 13. We do not knowingly collect data from children.</p><br />
-      <p><strong>6. CONTACT</strong><br />Questions? Reach us at: <a href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a></p>
+      <h2><span data-lang="en" class="visible">Privacy Policy</span><span data-lang="tr">Gizlilik Politikası</span></h2>
+
+      <!-- EN -->
+      <div data-lang="en" class="visible">
+        <p><em>Last updated: May 2025</em></p><br />
+        <p>Akanzi ("we", "our", or "the app") is committed to protecting your privacy. This policy explains what data is collected when you use Akanzi and how it is used.</p><br />
+        <p><strong>1. DATA WE COLLECT</strong></p><br />
+        <p><strong>Location</strong><br />We request access to your device's location while the app is in use. This is used solely to search for nearby places via the Google Places API. We do not store your location on any server — all processing happens on your device.</p><br />
+        <p><strong>Advertising Identifier (IDFA)</strong><br />With your permission (via the App Tracking Transparency prompt), AdMob may collect your device's advertising identifier to deliver personalised ads. If you decline, non-personalised ads will be shown instead.</p><br />
+        <p><strong>App Data</strong><br />Groups, members, and saved spots are stored locally on your device using AsyncStorage. This data never leaves your device and is not sent to any server.</p><br />
+        <p><strong>2. THIRD-PARTY SERVICES</strong></p><br />
+        <ul>
+          <li><strong>Google Places API</strong> — Used to search and display nearby places. Subject to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
+          <li><strong>Google AdMob</strong> — Used to display ads. Subject to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
+        </ul><br />
+        <p><strong>3. DATA SHARING</strong><br />We do not sell, trade, or share your personal data with third parties, except as described above via Google services.</p><br />
+        <p><strong>4. DATA RETENTION</strong><br />All app data is stored locally on your device. Uninstalling the app removes all data. We retain no data on external servers.</p><br />
+        <p><strong>5. CHILDREN'S PRIVACY</strong><br />Akanzi is not directed at children under 13. We do not knowingly collect data from children.</p><br />
+        <p><strong>6. CONTACT</strong><br />Questions? Reach us at: <a href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a></p>
+      </div>
+
+      <!-- TR -->
+      <div data-lang="tr">
+        <p><em>Son güncelleme: Mayıs 2025</em></p><br />
+        <p>Akanzi ("biz", "uygulama") gizliliğinizi korumayı taahhüt eder. Bu politika, Akanzi'yi kullandığınızda hangi verilerin toplandığını ve nasıl kullanıldığını açıklar.</p><br />
+        <p><strong>1. TOPLADĞIMIZ VERİLER</strong></p><br />
+        <p><strong>Konum</strong><br />Uygulama kullanımdayken cihazınızın konumuna erişim talep ederiz. Bu yalnızca Google Places API aracılığıyla yakındaki yerleri aramak için kullanılır. Konumunuzu hiçbir sunucuda saklamayız — tüm işlemler cihazınızda gerçekleşir.</p><br />
+        <p><strong>Reklam Tanımlayıcısı (IDFA)</strong><br />İzninizle (Uygulama İzleme Şeffaflığı istemi aracılığıyla), AdMob kişiselleştirilmiş reklamlar sunmak için cihazınızın reklam tanımlayıcısını toplayabilir. Reddederseniz, kişiselleştirilmemiş reklamlar gösterilir.</p><br />
+        <p><strong>Uygulama Verileri</strong><br />Gruplar, üyeler ve kaydedilen mekanlar cihazınızda AsyncStorage kullanılarak yerel olarak depolanır. Bu veriler cihazınızdan çıkmaz ve hiçbir sunucuya gönderilmez.</p><br />
+        <p><strong>2. ÜÇÜNCÜ TARAF HİZMETLER</strong></p><br />
+        <ul>
+          <li><strong>Google Places API</strong> — Yakındaki yerleri aramak ve görüntülemek için kullanılır. <a href="https://policies.google.com/privacy" target="_blank">Google'ın Gizlilik Politikası</a>'na tabidir.</li>
+          <li><strong>Google AdMob</strong> — Reklam göstermek için kullanılır. <a href="https://policies.google.com/privacy" target="_blank">Google'ın Gizlilik Politikası</a>'na tabidir.</li>
+        </ul><br />
+        <p><strong>3. VERİ PAYLAŞIMI</strong><br />Kişisel verilerinizi, yukarıda Google hizmetleri aracılığıyla açıklananlar dışında üçüncü taraflarla satmaz, takas etmez veya paylaşmayız.</p><br />
+        <p><strong>4. VERİ SAKLAMA</strong><br />Tüm uygulama verileri cihazınızda yerel olarak saklanır. Uygulamayı kaldırmak tüm verileri siler. Harici sunucularda herhangi bir veri saklamayız.</p><br />
+        <p><strong>5. ÇOCUKLARIN GİZLİLİĞİ</strong><br />Akanzi 13 yaşın altındaki çocuklara yönelik değildir. Çocuklardan bilerek veri toplamayız.</p><br />
+        <p><strong>6. İLETİŞİM</strong><br />Sorularınız için: <a href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a></p>
+      </div>
     </div>
 
+    <!-- TERMS -->
     <div class="card" id="terms">
-      <h2>Terms of Use</h2>
-      <p><em>Last updated: May 2025</em></p><br />
-      <p>By using Akanzi ("the app"), you agree to these Terms of Use. If you do not agree, please do not use the app.</p><br />
-      <p><strong>1. USE OF THE APP</strong><br />Akanzi helps groups discover and decide on nearby places to visit. You may use the app for personal, non-commercial purposes only.</p><br />
-      <p>You agree not to:</p>
-      <ul>
-        <li>Use the app for any unlawful purpose</li>
-        <li>Attempt to reverse-engineer or tamper with the app</li>
-        <li>Use the app in a way that could damage, disable, or impair it</li>
-      </ul><br />
-      <p><strong>2. PLACE INFORMATION</strong><br />Place information is sourced from the Google Places API. We do not guarantee accuracy. Always verify details before visiting.</p><br />
-      <p><strong>3. LOCATION DATA</strong><br />The app requests your location to find nearby places. Core features will not function without it.</p><br />
-      <p><strong>4. ADVERTISING</strong><br />The app displays ads provided by Google AdMob. Ad content is subject to Google's advertising policies.</p><br />
-      <p><strong>5. INTELLECTUAL PROPERTY</strong><br />All content, design, and code within Akanzi is owned by its developers. You may not copy, reproduce, or distribute any part of the app without permission.</p><br />
-      <p><strong>6. DISCLAIMER OF WARRANTIES</strong><br />The app is provided "as is" without warranties of any kind.</p><br />
-      <p><strong>7. LIMITATION OF LIABILITY</strong><br />To the fullest extent permitted by law, we are not liable for any indirect, incidental, or consequential damages.</p><br />
-      <p><strong>8. CHANGES TO TERMS</strong><br />We may update these terms at any time. Continued use constitutes acceptance.</p><br />
-      <p><strong>9. CONTACT</strong><br />Questions? Reach us at: <a href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a></p>
+      <h2><span data-lang="en" class="visible">Terms of Use</span><span data-lang="tr">Kullanım Koşulları</span></h2>
+
+      <!-- EN -->
+      <div data-lang="en" class="visible">
+        <p><em>Last updated: May 2025</em></p><br />
+        <p>By using Akanzi ("the app"), you agree to these Terms of Use. If you do not agree, please do not use the app.</p><br />
+        <p><strong>1. USE OF THE APP</strong><br />Akanzi helps groups discover and decide on nearby places to visit. You may use the app for personal, non-commercial purposes only.</p><br />
+        <p>You agree not to:</p>
+        <ul>
+          <li>Use the app for any unlawful purpose</li>
+          <li>Attempt to reverse-engineer or tamper with the app</li>
+          <li>Use the app in a way that could damage, disable, or impair it</li>
+        </ul><br />
+        <p><strong>2. PLACE INFORMATION</strong><br />Place information is sourced from the Google Places API. We do not guarantee accuracy. Always verify details before visiting.</p><br />
+        <p><strong>3. LOCATION DATA</strong><br />The app requests your location to find nearby places. Core features will not function without it.</p><br />
+        <p><strong>4. ADVERTISING</strong><br />The app displays ads provided by Google AdMob. Ad content is subject to Google's advertising policies.</p><br />
+        <p><strong>5. INTELLECTUAL PROPERTY</strong><br />All content, design, and code within Akanzi is owned by its developers. You may not copy, reproduce, or distribute any part of the app without permission.</p><br />
+        <p><strong>6. DISCLAIMER OF WARRANTIES</strong><br />The app is provided "as is" without warranties of any kind.</p><br />
+        <p><strong>7. LIMITATION OF LIABILITY</strong><br />To the fullest extent permitted by law, we are not liable for any indirect, incidental, or consequential damages.</p><br />
+        <p><strong>8. CHANGES TO TERMS</strong><br />We may update these terms at any time. Continued use constitutes acceptance.</p><br />
+        <p><strong>9. CONTACT</strong><br />Questions? Reach us at: <a href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a></p>
+      </div>
+
+      <!-- TR -->
+      <div data-lang="tr">
+        <p><em>Son güncelleme: Mayıs 2025</em></p><br />
+        <p>Akanzi'yi ("uygulama") kullanarak bu Kullanım Koşulları'nı kabul etmiş olursunuz. Kabul etmiyorsanız lütfen uygulamayı kullanmayın.</p><br />
+        <p><strong>1. UYGULAMANIN KULLANIMI</strong><br />Akanzi, grupların yakınlarındaki yerleri keşfetmesine ve karar vermesine yardımcı olur. Uygulamayı yalnızca kişisel, ticari olmayan amaçlarla kullanabilirsiniz.</p><br />
+        <p>Aşağıdakileri yapmamayı kabul edersiniz:</p>
+        <ul>
+          <li>Uygulamayı herhangi bir yasadışı amaç için kullanmak</li>
+          <li>Uygulamayı tersine mühendislik veya kurcalama girişiminde bulunmak</li>
+          <li>Uygulamayı zarar verebilecek, devre dışı bırakabilecek şekilde kullanmak</li>
+        </ul><br />
+        <p><strong>2. MEKAN BİLGİLERİ</strong><br />Mekan bilgileri Google Places API'den alınmaktadır. Doğruluğunu garanti etmeyiz. Ziyaret etmeden önce her zaman detayları doğrulayın.</p><br />
+        <p><strong>3. KONUM VERİSİ</strong><br />Uygulama, yakındaki yerleri bulmak için konumunuzu ister. Temel özellikler bu olmadan çalışmaz.</p><br />
+        <p><strong>4. REKLAMCILIK</strong><br />Uygulama, Google AdMob tarafından sağlanan reklamları gösterir. Reklam içeriği Google'ın reklam politikalarına tabidir.</p><br />
+        <p><strong>5. FİKRİ MÜLKİYET</strong><br />Akanzi içindeki tüm içerik, tasarım ve kod geliştiricilerine aittir. İzin almadan kopyalanamaz veya dağıtılamaz.</p><br />
+        <p><strong>6. GARANTİ REDDİ</strong><br />Uygulama herhangi bir garanti olmaksızın "olduğu gibi" sunulmaktadır.</p><br />
+        <p><strong>7. SORUMLULUĞUN SINIRLANDIRILMASI</strong><br />Yasaların izin verdiği azami ölçüde, dolaylı veya arızi zararlardan sorumlu değiliz.</p><br />
+        <p><strong>8. KOŞULLARDA DEĞİŞİKLİK</strong><br />Bu koşulları istediğimiz zaman güncelleyebiliriz. Kullanmaya devam etmek kabul anlamına gelir.</p><br />
+        <p><strong>9. İLETİŞİM</strong><br />Sorularınız için: <a href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a></p>
+      </div>
     </div>
 
   </div>
 
   <footer>
-    <p>© 2025 Akanzi — <a href="index.html">Back to home</a></p>
+    <p>© 2025 Akanzi — <a href="index.html"><span data-lang="en" class="visible">Back to home</span><span data-lang="tr">Ana sayfaya dön</span></a></p>
   </footer>
 
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('visible', el.dataset.lang === lang);
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+      });
+      document.documentElement.lang = lang;
+      localStorage.setItem('akanzi-lang', lang);
+    }
+
+    const saved = localStorage.getItem('akanzi-lang');
+    const browser = navigator.language?.startsWith('tr') ? 'tr' : 'en';
+    setLang(saved || browser);
+  </script>
 </body>
 </html>

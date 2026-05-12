@@ -8,20 +8,12 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #080810;
-      --bg2: #0e0c1e;
-      --card: #12101f;
-      --border: #ffffff0f;
-      --purple: #a78bfa;
-      --purple2: #7c3aed;
-      --text: #f0eeff;
-      --muted: #9990cc;
-      --dim: #5a5480;
+      --bg: #080810; --bg2: #0e0c1e; --card: #12101f; --border: #ffffff0f;
+      --purple: #a78bfa; --purple2: #7c3aed; --text: #f0eeff; --muted: #9990cc; --dim: #5a5480;
     }
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; overflow-x: hidden; }
 
-    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -30,11 +22,20 @@
       border-bottom: 1px solid var(--border);
     }
     .nav-logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -1px; color: #fff; }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
     .nav-links { display: flex; gap: 24px; }
     .nav-links a { color: var(--muted); font-size: 0.9rem; text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
+    .lang-toggle {
+      display: flex; gap: 2px; background: #ffffff0a; border: 1px solid var(--border);
+      border-radius: 8px; overflow: hidden;
+    }
+    .lang-btn {
+      padding: 5px 12px; font-size: 0.8rem; font-weight: 600; cursor: pointer;
+      border: none; background: transparent; color: var(--muted); transition: all 0.15s;
+    }
+    .lang-btn.active { background: var(--purple); color: #fff; }
 
-    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -48,14 +49,10 @@
     }
     .hero h1 {
       font-size: clamp(2.8rem, 8vw, 5.5rem); font-weight: 900;
-      letter-spacing: -2px; line-height: 1.05; color: #fff;
-      max-width: 800px;
+      letter-spacing: -2px; line-height: 1.05; color: #fff; max-width: 800px;
     }
     .hero h1 span { color: var(--purple); }
-    .hero p {
-      margin-top: 24px; font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: var(--muted); max-width: 520px;
-    }
+    .hero p { margin-top: 24px; font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--muted); max-width: 520px; }
     .cta-row { display: flex; gap: 16px; margin-top: 40px; flex-wrap: wrap; justify-content: center; }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 10px;
@@ -72,73 +69,42 @@
     }
     .btn-secondary:hover { background: #ffffff14; }
 
-    /* FEATURES */
     .section { padding: 100px 24px; max-width: 1080px; margin: 0 auto; }
-    .section-label {
-      text-align: center; color: var(--purple); font-size: 0.8rem;
-      font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;
-    }
-    .section-title {
-      text-align: center; font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 800; letter-spacing: -1px; color: #fff; margin-bottom: 60px;
-    }
-    .features-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
-    }
-    .feature-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 32px;
-      transition: border-color 0.2s;
-    }
+    .section-label { text-align: center; color: var(--purple); font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+    .section-title { text-align: center; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -1px; color: #fff; margin-bottom: 60px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s; }
     .feature-card:hover { border-color: #a78bfa33; }
-    .feature-icon {
-      width: 48px; height: 48px; border-radius: 14px;
-      background: #a78bfa15; display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; margin-bottom: 20px;
-    }
+    .feature-icon { width: 48px; height: 48px; border-radius: 14px; background: #a78bfa15; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 20px; }
     .feature-card h3 { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
     .feature-card p { font-size: 0.92rem; color: var(--muted); line-height: 1.6; }
 
-    /* HOW IT WORKS */
     .steps { display: flex; flex-direction: column; gap: 0; max-width: 640px; margin: 0 auto; }
     .step { display: flex; gap: 24px; padding: 32px 0; border-bottom: 1px solid var(--border); }
     .step:last-child { border-bottom: none; }
-    .step-num {
-      flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
-      background: #a78bfa18; border: 1px solid #a78bfa33;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; font-weight: 800; color: var(--purple);
-    }
+    .step-num { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: #a78bfa18; border: 1px solid #a78bfa33; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; color: var(--purple); }
     .step-content h3 { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
     .step-content p { font-size: 0.92rem; color: var(--muted); }
 
-    /* PRIVACY STRIP */
-    .privacy-strip {
-      background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 60px 24px; text-align: center;
-    }
+    .privacy-strip { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 24px; text-align: center; }
     .privacy-strip h2 { font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 12px; }
     .privacy-strip p { color: var(--muted); max-width: 500px; margin: 0 auto; font-size: 0.95rem; }
     .privacy-pills { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
-    .pill {
-      background: #a78bfa0d; border: 1px solid #a78bfa22; color: var(--muted);
-      font-size: 0.85rem; padding: 8px 18px; border-radius: 999px;
-    }
+    .pill { background: #a78bfa0d; border: 1px solid #a78bfa22; color: var(--muted); font-size: 0.85rem; padding: 8px 18px; border-radius: 999px; }
 
-    /* FOOTER */
-    footer {
-      padding: 40px 32px; display: flex; flex-wrap: wrap; gap: 16px;
-      align-items: center; justify-content: space-between;
-      border-top: 1px solid var(--border); color: var(--dim); font-size: 0.85rem;
-    }
+    footer { padding: 40px 32px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); color: var(--dim); font-size: 0.85rem; }
     footer a { color: var(--dim); text-decoration: none; }
     footer a:hover { color: var(--muted); }
     .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
 
+    [data-lang] { display: none; }
+    [data-lang].visible { display: block; }
+    [data-lang-inline] { display: none; }
+    [data-lang-inline].visible { display: inline; }
+
     @media (max-width: 600px) {
       nav { padding: 14px 20px; }
       .nav-links { display: none; }
-      .hero h1 { letter-spacing: -1px; }
     }
   </style>
 </head>
@@ -146,89 +112,123 @@
 
   <nav>
     <span class="nav-logo">akanzi</span>
-    <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#how">How it works</a>
-      <a href="support.html">Support</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#features" data-lang="en" class="visible">Features</a>
+        <a href="#features" data-lang="tr">Özellikler</a>
+        <a href="#how" data-lang="en" class="visible">How it works</a>
+        <a href="#how" data-lang="tr">Nasıl çalışır</a>
+        <a href="support.html" data-lang="en" class="visible">Support</a>
+        <a href="support.html" data-lang="tr">Destek</a>
+      </div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('tr')">TR</button>
+      </div>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-badge">Available on the App Store</div>
-    <h1>Stop arguing.<br /><span>Start going.</span></h1>
-    <p>Akanzi helps your squad decide where to go — swipe spots, race to a winner, no drama.</p>
+    <div class="hero-badge">
+      <span data-lang="en" class="visible">Available on the App Store</span>
+      <span data-lang="tr">App Store'da Mevcut</span>
+    </div>
+    <h1>
+      <span data-lang="en" class="visible">Stop arguing.<br /><span style="color:var(--purple)">Start going.</span></span>
+      <span data-lang="tr">Tartışmayı bırak.<br /><span style="color:var(--purple)">Hadi çıkalım.</span></span>
+    </h1>
+    <p>
+      <span data-lang="en" class="visible">Akanzi helps your squad decide where to go — swipe spots, race to a winner, no drama.</span>
+      <span data-lang="tr">Akanzi, ekibinin nereye gideceğine karar vermesine yardımcı olur — mekanları kaydır, kazananı belirle, tartışma yok.</span>
+    </p>
     <div class="cta-row">
       <a href="https://apps.apple.com/app/akanzi/id6768405259" class="btn-primary">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        Download on App Store
+        <span data-lang="en" class="visible">Download on App Store</span>
+        <span data-lang="tr">App Store'dan İndir</span>
       </a>
-      <a href="#how" class="btn-secondary">See how it works</a>
+      <a href="#how" class="btn-secondary">
+        <span data-lang="en" class="visible">See how it works</span>
+        <span data-lang="tr">Nasıl çalıştığını gör</span>
+      </a>
     </div>
   </section>
 
   <!-- FEATURES -->
   <section class="section" id="features">
-    <div class="section-label">Features</div>
-    <div class="section-title">Everything your crew needs</div>
+    <div class="section-label">
+      <span data-lang="en" class="visible">Features</span>
+      <span data-lang="tr">Özellikler</span>
+    </div>
+    <div class="section-title">
+      <span data-lang="en" class="visible">Everything your crew needs</span>
+      <span data-lang="tr">Ekibinin ihtiyacı olan her şey</span>
+    </div>
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">📍</div>
-        <h3>Find Nearby Spots</h3>
-        <p>Search cafés, bars, restaurants, parks, cinemas and more — filtered by distance and vibe.</p>
+        <h3><span data-lang="en" class="visible">Find Nearby Spots</span><span data-lang="tr">Yakın Mekanları Keşfet</span></h3>
+        <p><span data-lang="en" class="visible">Search cafés, bars, restaurants, parks, cinemas and more — filtered by distance and vibe.</span><span data-lang="tr">Kafe, bar, restoran, park, sinema ve daha fazlasını ara — mesafe ve türe göre filtrele.</span></p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">👆</div>
-        <h3>Swipe to Decide</h3>
-        <p>Swipe right on places that hit, left on the ones that don't. Fast, fun, no endless group chats.</p>
+        <h3><span data-lang="en" class="visible">Swipe to Decide</span><span data-lang="tr">Kaydırarak Karar Ver</span></h3>
+        <p><span data-lang="en" class="visible">Swipe right on places that hit, left on the ones that don't. Fast, fun, no endless group chats.</span><span data-lang="tr">Beğendiğin yerleri sağa, beğenmediklerini sola kaydır. Hızlı, eğlenceli, sonsuz grup sohbeti yok.</span></p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🏁</div>
-        <h3>Marble Race Winner</h3>
-        <p>Can't pick from your likes? Let them race it out. The first marble to cross the line wins.</p>
+        <h3><span data-lang="en" class="visible">Marble Race Winner</span><span data-lang="tr">Bilye Yarışı ile Kazan</span></h3>
+        <p><span data-lang="en" class="visible">Can't pick from your likes? Let them race it out. The first marble to cross the line wins.</span><span data-lang="tr">Beğendiklerinden seçemez misin? Yarıştırsın. Çizgiyi ilk geçen bilye kazanır.</span></p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">👥</div>
-        <h3>Squad Profiles</h3>
-        <p>Create squads for different crews. Save favourite spots per group and revisit them anytime.</p>
+        <h3><span data-lang="en" class="visible">Squad Profiles</span><span data-lang="tr">Ekip Profilleri</span></h3>
+        <p><span data-lang="en" class="visible">Create squads for different crews. Save favourite spots per group and revisit them anytime.</span><span data-lang="tr">Farklı ekipler için gruplar oluştur. Favori mekanları kaydet, istediğinde geri dön.</span></p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔒</div>
-        <h3>100% On-Device</h3>
-        <p>No account, no sign-up, no servers. Everything stays on your phone.</p>
+        <h3><span data-lang="en" class="visible">100% On-Device</span><span data-lang="tr">%100 Cihazında</span></h3>
+        <p><span data-lang="en" class="visible">No account, no sign-up, no servers. Everything stays on your phone.</span><span data-lang="tr">Hesap yok, kayıt yok, sunucu yok. Her şey telefonunda kalır.</span></p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🌙</div>
-        <h3>Dark & Light Mode</h3>
-        <p>Follows your system theme automatically. Looks great either way.</p>
+        <h3><span data-lang="en" class="visible">Dark & Light Mode</span><span data-lang="tr">Karanlık & Aydınlık Mod</span></h3>
+        <p><span data-lang="en" class="visible">Follows your system theme automatically. Looks great either way.</span><span data-lang="tr">Sistem temasını otomatik takip eder. Her iki şekilde de harika görünür.</span></p>
       </div>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
   <section class="section" id="how">
-    <div class="section-label">How it works</div>
-    <div class="section-title">Three steps, one decision</div>
+    <div class="section-label">
+      <span data-lang="en" class="visible">How it works</span>
+      <span data-lang="tr">Nasıl çalışır</span>
+    </div>
+    <div class="section-title">
+      <span data-lang="en" class="visible">Three steps, one decision</span>
+      <span data-lang="tr">Üç adım, bir karar</span>
+    </div>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-content">
-          <h3>Create your squad</h3>
-          <p>Add your crew members and build a shared list of go-to spots together.</p>
+          <h3><span data-lang="en" class="visible">Create your squad</span><span data-lang="tr">Ekibini oluştur</span></h3>
+          <p><span data-lang="en" class="visible">Add your crew members and build a shared list of go-to spots together.</span><span data-lang="tr">Ekip üyelerini ekle, birlikte gidebileceğiniz mekanları listele.</span></p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-content">
-          <h3>Swipe through the vibe</h3>
-          <p>Pick a category, set your distance, and swipe through nearby places until something clicks.</p>
+          <h3><span data-lang="en" class="visible">Swipe through the vibe</span><span data-lang="tr">Havayı hisset, kaydır</span></h3>
+          <p><span data-lang="en" class="visible">Pick a category, set your distance, and swipe through nearby places until something clicks.</span><span data-lang="tr">Kategori seç, mesafeyi ayarla ve bir şey tutana kadar yakın mekanları kaydır.</span></p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-content">
-          <h3>Let chaos pick the winner</h3>
-          <p>Your liked spots race it out in a marble race. First one wins. No arguments, no coin flips.</p>
+          <h3><span data-lang="en" class="visible">Let chaos pick the winner</span><span data-lang="tr">Kaosun kazananı seçmesine izin ver</span></h3>
+          <p><span data-lang="en" class="visible">Your liked spots race it out in a marble race. First one wins. No arguments, no coin flips.</span><span data-lang="tr">Beğendiğin mekanlar bilye yarışında kapışır. İlk gelen kazanır. Tartışma yok, yazı tura yok.</span></p>
         </div>
       </div>
     </div>
@@ -236,26 +236,49 @@
 
   <!-- PRIVACY -->
   <div class="privacy-strip">
-    <h2>Your privacy matters</h2>
-    <p>Akanzi is built with privacy first. No accounts, no tracking, no data sent to our servers.</p>
+    <h2>
+      <span data-lang="en" class="visible">Your privacy matters</span>
+      <span data-lang="tr">Gizliliğin önemli</span>
+    </h2>
+    <p>
+      <span data-lang="en" class="visible">Akanzi is built with privacy first. No accounts, no tracking, no data sent to our servers.</span>
+      <span data-lang="tr">Akanzi gizlilik öncelikli tasarlanmıştır. Hesap yok, takip yok, sunucularımıza gönderilen veri yok.</span>
+    </p>
     <div class="privacy-pills">
-      <span class="pill">No account required</span>
-      <span class="pill">No data stored externally</span>
-      <span class="pill">Location used on-device only</span>
-      <span class="pill">Optional personalised ads</span>
+      <span class="pill"><span data-lang="en" class="visible">No account required</span><span data-lang="tr">Hesap gerekmez</span></span>
+      <span class="pill"><span data-lang="en" class="visible">No data stored externally</span><span data-lang="tr">Dışarıda veri saklanmaz</span></span>
+      <span class="pill"><span data-lang="en" class="visible">Location used on-device only</span><span data-lang="tr">Konum yalnızca cihazda kullanılır</span></span>
+      <span class="pill"><span data-lang="en" class="visible">Optional personalised ads</span><span data-lang="tr">İsteğe bağlı kişiselleştirilmiş reklamlar</span></span>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer>
-    <span>© 2025 Akanzi. Made with ♥ by an indie dev.</span>
+    <span>© 2025 Akanzi — <span data-lang="en" class="visible">Made with ♥ by an indie dev.</span><span data-lang="tr">Bağımsız bir geliştirici tarafından ♥ ile yapıldı.</span></span>
     <div class="footer-links">
-      <a href="support.html#support">Support</a>
-      <a href="support.html#privacy">Privacy Policy</a>
-      <a href="support.html#terms">Terms of Use</a>
+      <a href="support.html#support"><span data-lang="en" class="visible">Support</span><span data-lang="tr">Destek</span></a>
+      <a href="support.html#privacy"><span data-lang="en" class="visible">Privacy Policy</span><span data-lang="tr">Gizlilik Politikası</span></a>
+      <a href="support.html#terms"><span data-lang="en" class="visible">Terms of Use</span><span data-lang="tr">Kullanım Koşulları</span></a>
       <a href="mailto:gibbonook@gmail.com">Contact</a>
     </div>
   </footer>
 
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('visible', el.dataset.lang === lang);
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+      });
+      document.documentElement.lang = lang;
+      localStorage.setItem('akanzi-lang', lang);
+    }
+
+    // Init from saved preference or browser language
+    const saved = localStorage.getItem('akanzi-lang');
+    const browser = navigator.language?.startsWith('tr') ? 'tr' : 'en';
+    setLang(saved || browser);
+  </script>
 </body>
 </html>
