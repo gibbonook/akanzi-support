@@ -96,22 +96,35 @@
 
       <div class="card" id="privacy">
         <h2>Privacy Policy</h2>
-        <p><em>Last updated: May 2025</em></p><br />
-        <p>Akanzi ("we", "our", or "the app") is committed to protecting your privacy. This policy explains what data is collected when you use Akanzi and how it is used.</p><br />
-        <p><strong>1. DATA WE COLLECT</strong></p><br />
-        <p><strong>Location</strong><br />We request access to your device's location while the app is in use. This is used solely to search for nearby places via the Google Places API. We do not store your location on any server — all processing happens on your device.</p><br />
-        <p><strong>Advertising Identifier (IDFA)</strong><br />With your permission (via the App Tracking Transparency prompt), AdMob may collect your device's advertising identifier to deliver personalised ads. If you decline, non-personalised ads will be shown instead.</p><br />
-        <p><strong>App Data</strong><br />Groups, members, and saved spots are stored locally on your device using AsyncStorage. This data never leaves your device and is not sent to any server.</p><br />
-        <p><strong>2. THIRD-PARTY SERVICES</strong></p><br />
-        <ul>
-          <li><strong>Google Places API</strong> — Used to search and display nearby places. Subject to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
-          <li><strong>Google AdMob</strong> — Used to display ads. Subject to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
-        </ul><br />
-        <p><strong>3. DATA SHARING</strong><br />We do not sell, trade, or share your personal data with third parties, except as described above via Google services.</p><br />
-        <p><strong>4. DATA RETENTION</strong><br />All app data is stored locally on your device. Uninstalling the app removes all data. We retain no data on external servers.</p><br />
-        <p><strong>5. CHILDREN'S PRIVACY</strong><br />Akanzi is not directed at children under 13. We do not knowingly collect data from children.</p><br />
-        <p><strong>6. PURCHASES &amp; SUBSCRIPTIONS</strong><br />When you make an in-app purchase or subscribe to Akanzi Premium, payments are processed entirely by Apple. We do not collect or store your payment information, credit-card numbers, or Apple ID. Apple may share a transaction receipt with the app so we can unlock premium features on your device — this receipt is processed locally and is not transmitted to any server controlled by us. Apple's handling of your purchase data is governed by Apple's own <a href="https://www.apple.com/legal/privacy/" target="_blank">Privacy Policy</a>.</p><br />
-        <p><strong>7. CONTACT</strong><br />Questions? Reach us at: <a href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a></p>
+        <p><em>Last updated: October 2026</em></p><br />
+        <p>Akanzi ("we", "our", or "the app") is committed to protecting your privacy. This policy explains what data is collected when you use Akanzi, where it is stored, and how it is used.</p><br />
+        <p><strong>1. USING AKANZI WITHOUT AN ACCOUNT</strong></p><br />
+        <p>You can use most of Akanzi without creating an account or giving us any personal information. Discovering places, saving them to your personal list, and creating personal crews all work on your device alone.</p><br />
+        <p>An account is only required for shared crews, which sync data between members' phones.</p><br />
+        <p><strong>2. DATA WE COLLECT</strong></p><br />
+        <p><strong>Location</strong><br />We request access to your device's location while the app is in use. This is used solely to search for nearby places via the Google Places API. Your location is not stored on our servers.</p><br />
+        <p><strong>Advertising Identifier (IDFA)</strong><br />With your permission (via the App Tracking Transparency prompt), AdMob may collect your device's advertising identifier to deliver personalised ads. If you decline, non-personalised ads are shown instead.</p><br />
+        <p><strong>Data stored on your device</strong><br />Personal crews, your personal saved list, and app preferences are stored locally using AsyncStorage. This data stays on your device and is not uploaded unless you use a shared crew.</p><br />
+        <p><strong>Account data (optional)</strong><br />If you create an account, we store your email address and an authentication record with Google Firebase Authentication. We never see or store your password — it is handled by Firebase. To limit an account to two devices, we also store a random ID for each device signed in to it.</p><br />
+        <p><strong>Shared crew data (optional)</strong><br />If you create or join a shared crew, the following is stored in Google Cloud Firestore so it can sync between members: the crew name, its invite code, the display name you chose, an anonymous account identifier, and the places saved to that crew (name, address, category, coordinates, rating and photo reference from Google Places). Other members of the same crew can see this data.</p><br />
+        <p><strong>3. THIRD-PARTY SERVICES</strong></p><br />
+        <p>Google Places API — used to search and display nearby places.<br />Google Firebase (Authentication and Firestore) — used for optional accounts and shared crews. Data is processed on Google's infrastructure.<br />Google AdMob — used to display ads.<br />All are subject to Google's Privacy Policy: policies.google.com/privacy</p><br />
+        <p>Apple — in-app purchases are processed by Apple. See apple.com/legal/privacy</p><br />
+        <p><strong>4. DATA SHARING</strong></p><br />
+        <p>We do not sell or trade your personal data. Data in a shared crew is visible to the other members of that crew. We do not share your data with anyone else beyond the service providers listed above.</p><br />
+        <p><strong>5. DATA RETENTION AND DELETION</strong></p><br />
+        <p>Device data — uninstalling the app removes everything stored locally on your device.</p><br />
+        <p>Account and shared crew data — you can permanently delete your account at any time from Settings → Account → Delete account. This removes your authentication record and your account document, and removes you from shared crews you belong to.</p><br />
+        <p>Please note: places you added to a shared crew may remain visible to that crew after you leave, because they form part of that crew's shared list. If you want them removed, delete them before leaving, or ask the crew owner.</p><br />
+        <p>If you would rather we handle a deletion request for you, email us at the address below.</p><br />
+        <p><strong>6. CHILDREN'S PRIVACY</strong></p><br />
+        <p>Akanzi is not directed at children under 13. We do not knowingly collect data from children.</p><br />
+        <p><strong>7. PURCHASES &amp; SUBSCRIPTIONS</strong></p><br />
+        <p>When you make an in-app purchase or subscribe to Akanzi Premium, payments are processed entirely by Apple. We do not collect or store your payment information, credit-card numbers, or Apple ID. Apple may share a transaction receipt with the app so we can unlock premium features on your device — this receipt is processed locally.</p><br />
+        <p><strong>8. YOUR RIGHTS</strong></p><br />
+        <p>Depending on where you live, you may have the right to access, correct, or delete the personal data we hold about you, and to request a copy of it. The in-app delete option covers the data we store. For anything else, contact us below.</p><br />
+        <p><strong>9. CONTACT</strong></p><br />
+        <p>Questions? Reach us at: <a href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a></p>
       </div>
 
       <div class="card" id="terms">
@@ -165,22 +178,35 @@
 
       <div class="card" id="privacy-tr">
         <h2>Gizlilik Politikası</h2>
-        <p><em>Son güncelleme: Mayıs 2025</em></p><br />
-        <p>Akanzi ("biz", "uygulama") gizliliğinizi korumayı taahhüt eder. Bu politika, Akanzi'yi kullandığınızda hangi verilerin toplandığını ve nasıl kullanıldığını açıklar.</p><br />
-        <p><strong>1. TOPLADĞIMIZ VERİLER</strong></p><br />
-        <p><strong>Konum</strong><br />Uygulama kullanımdayken cihazınızın konumuna erişim talep ederiz. Bu yalnızca Google Places API aracılığıyla yakındaki yerleri aramak için kullanılır. Konumunuzu hiçbir sunucuda saklamayız — tüm işlemler cihazınızda gerçekleşir.</p><br />
-        <p><strong>Reklam Tanımlayıcısı (IDFA)</strong><br />İzninizle (Uygulama İzleme Şeffaflığı istemi aracılığıyla), AdMob kişiselleştirilmiş reklamlar sunmak için cihazınızın reklam tanımlayıcısını toplayabilir. Reddederseniz, kişiselleştirilmemiş reklamlar gösterilir.</p><br />
-        <p><strong>Uygulama Verileri</strong><br />Gruplar, üyeler ve kaydedilen mekanlar cihazınızda AsyncStorage kullanılarak yerel olarak depolanır. Bu veriler cihazınızdan çıkmaz ve hiçbir sunucuya gönderilmez.</p><br />
-        <p><strong>2. ÜÇÜNCÜ TARAF HİZMETLER</strong></p><br />
-        <ul>
-          <li><strong>Google Places API</strong> — Yakındaki yerleri aramak ve görüntülemek için kullanılır. <a href="https://policies.google.com/privacy" target="_blank">Google'ın Gizlilik Politikası</a>'na tabidir.</li>
-          <li><strong>Google AdMob</strong> — Reklam göstermek için kullanılır. <a href="https://policies.google.com/privacy" target="_blank">Google'ın Gizlilik Politikası</a>'na tabidir.</li>
-        </ul><br />
-        <p><strong>3. VERİ PAYLAŞIMI</strong><br />Kişisel verilerinizi, yukarıda Google hizmetleri aracılığıyla açıklananlar dışında üçüncü taraflarla satmaz, takas etmez veya paylaşmayız.</p><br />
-        <p><strong>4. VERİ SAKLAMA</strong><br />Tüm uygulama verileri cihazınızda yerel olarak saklanır. Uygulamayı kaldırmak tüm verileri siler. Harici sunucularda herhangi bir veri saklamayız.</p><br />
-        <p><strong>5. ÇOCUKLARIN GİZLİLİĞİ</strong><br />Akanzi 13 yaşın altındaki çocuklara yönelik değildir. Çocuklardan bilerek veri toplamayız.</p><br />
-        <p><strong>6. SATIN ALMALAR VE ABONELİKLER</strong><br />Uygulama içi satın alma yaptığınızda veya Akanzi Premium aboneliğine kaydolduğunuzda, ödemeler tamamen Apple tarafından işlenir. Ödeme bilgilerinizi, kredi kartı numaralarınızı veya Apple ID'nizi toplamaz ya da saklamayız. Apple, premium özellikleri cihazınızda etkinleştirebilmemiz için uygulamayla bir işlem makbuzu paylaşabilir — bu makbuz cihazınızda yerel olarak işlenir ve tarafımızdan kontrol edilen herhangi bir sunucuya iletilmez. Apple'ın satın alma verilerinizi işlemesi Apple'ın kendi <a href="https://www.apple.com/legal/privacy/" target="_blank">Gizlilik Politikası</a>'na tabidir.</p><br />
-        <p><strong>7. İLETİŞİM</strong><br />Sorularınız için: <a href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a></p>
+        <p><em>Son güncelleme: Ekim 2026</em></p><br />
+        <p>Akanzi ("biz", "bizim" veya "uygulama") gizliliğini korumaya önem verir. Bu politika, Akanzi'yi kullanırken hangi verilerin toplandığını, nerede saklandığını ve nasıl kullanıldığını açıklar.</p><br />
+        <p><strong>1. HESAPSIZ KULLANIM</strong></p><br />
+        <p>Akanzi'nin büyük bölümünü hesap açmadan, bize hiçbir kişisel bilgi vermeden kullanabilirsin. Mekan keşfetmek, kişisel listene kaydetmek ve kişisel ekipler oluşturmak tamamen cihazında çalışır.</p><br />
+        <p>Hesap yalnızca üyeler arasında senkronize olan paylaşımlı ekipler için gereklidir.</p><br />
+        <p><strong>2. TOPLANAN VERİLER</strong></p><br />
+        <p><strong>Konum</strong><br />Uygulama açıkken cihazının konumuna erişim isteriz. Bu yalnızca Google Places API ile yakındaki mekanları aramak için kullanılır. Konumun sunucularımızda saklanmaz.</p><br />
+        <p><strong>Reklam Tanımlayıcı (IDFA)</strong><br />İzin verirsen (App Tracking Transparency istemi ile), AdMob kişiselleştirilmiş reklam göstermek için cihazının reklam tanımlayıcısını toplayabilir. Reddedersen kişiselleştirilmemiş reklamlar gösterilir.</p><br />
+        <p><strong>Cihazında saklanan veriler</strong><br />Kişisel ekipler, kişisel kayıt listen ve uygulama tercihleri AsyncStorage ile cihazında saklanır. Paylaşımlı ekip kullanmadığın sürece bu veriler yüklenmez.</p><br />
+        <p><strong>Hesap verileri (isteğe bağlı)</strong><br />Hesap oluşturursan, e-posta adresini ve bir kimlik doğrulama kaydını Google Firebase Authentication ile saklarız. Şifreni asla görmez veya saklamayız — Firebase tarafından yönetilir. Bir hesabı iki cihazla sınırlamak için, hesaba giriş yapan her cihaz için rastgele bir kimlik de saklarız.</p><br />
+        <p><strong>Paylaşımlı ekip verileri (isteğe bağlı)</strong><br />Paylaşımlı ekip oluşturur veya katılırsan şunlar üyeler arasında senkronize olabilmesi için Google Cloud Firestore'da saklanır: ekip adı, davet kodu, seçtiğin görünen ad, anonim hesap tanımlayıcısı ve o ekibe kaydedilen mekanlar (Google Places'ten gelen ad, adres, kategori, koordinat, puan ve fotoğraf referansı). Aynı ekipteki diğer üyeler bu verileri görebilir.</p><br />
+        <p><strong>3. ÜÇÜNCÜ TARAF HİZMETLER</strong></p><br />
+        <p>Google Places API — yakındaki mekanları aramak ve göstermek için.<br />Google Firebase (Authentication ve Firestore) — isteğe bağlı hesaplar ve paylaşımlı ekipler için. Veriler Google altyapısında işlenir.<br />Google AdMob — reklam göstermek için.<br />Tümü Google Gizlilik Politikası'na tabidir: policies.google.com/privacy</p><br />
+        <p>Apple — uygulama içi satın alımlar Apple tarafından işlenir: apple.com/legal/privacy</p><br />
+        <p><strong>4. VERİ PAYLAŞIMI</strong></p><br />
+        <p>Kişisel verilerini satmaz veya takas etmeyiz. Paylaşımlı ekipteki veriler o ekibin diğer üyelerine görünür. Yukarıda listelenen hizmet sağlayıcılar dışında verilerini kimseyle paylaşmayız.</p><br />
+        <p><strong>5. VERİ SAKLAMA VE SİLME</strong></p><br />
+        <p>Cihaz verileri — uygulamayı kaldırmak cihazında yerel olarak saklanan her şeyi siler.</p><br />
+        <p>Hesap ve paylaşımlı ekip verileri — hesabını istediğin zaman Ayarlar → Hesap → Hesabı sil yolundan kalıcı olarak silebilirsin. Bu, kimlik doğrulama kaydını ve hesap belgeni siler, ayrıca üyesi olduğun paylaşımlı ekiplerden çıkarır.</p><br />
+        <p>Not: Paylaşımlı bir ekibe eklediğin mekanlar, o ekibin ortak listesinin parçası olduğu için sen ayrıldıktan sonra ekibe görünür kalabilir. Kaldırılmasını istiyorsan ayrılmadan önce sil ya da ekip sahibinden iste.</p><br />
+        <p>Silme talebini bizim yürütmemizi tercih edersen aşağıdaki adresten yaz.</p><br />
+        <p><strong>6. ÇOCUKLARIN GİZLİLİĞİ</strong></p><br />
+        <p>Akanzi 13 yaş altı çocuklara yönelik değildir. Bilerek çocuklardan veri toplamayız.</p><br />
+        <p><strong>7. SATIN ALIMLAR VE ABONELİKLER</strong></p><br />
+        <p>Uygulama içi satın alım veya Akanzi Premium aboneliği yaptığında ödemeler tamamen Apple tarafından işlenir. Ödeme bilgilerini, kredi kartı numaralarını veya Apple ID'ni toplamaz ve saklamayız. Apple, premium özellikleri açabilmemiz için uygulamayla bir işlem makbuzu paylaşabilir — bu makbuz cihazda işlenir.</p><br />
+        <p><strong>8. HAKLARIN</strong></p><br />
+        <p>Yaşadığın yere bağlı olarak, hakkında tuttuğumuz kişisel verilere erişme, bunları düzeltme veya silme ve bir kopyasını isteme hakkına sahip olabilirsin. Uygulama içi silme seçeneği sakladığımız verileri kapsar. Diğer talepler için bize yaz.</p><br />
+        <p><strong>9. İLETİŞİM</strong></p><br />
+        <p>Sorular? Bize ulaş: <a href="mailto:gibbonook@gmail.com">gibbonook@gmail.com</a></p>
       </div>
 
       <div class="card" id="terms-tr">
